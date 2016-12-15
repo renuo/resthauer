@@ -25,7 +25,6 @@ RSpec.describe 'GraphSchema' do
   end
 
   it 'can query all ratings for a menu' do
-    puts menu.ratings.count
     query = <<~GRAPHQL
     {
       menu(id: #{menu.id}) {
