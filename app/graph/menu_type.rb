@@ -8,4 +8,3 @@ MenuType = GraphQL::ObjectType.define do
   field :description, !types.String
   field :ratings, types[RatingType]
 end
-

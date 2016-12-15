@@ -7,4 +7,3 @@ RSpec.describe Reishauer do
     end
   end
 end
-
