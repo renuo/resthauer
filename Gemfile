@@ -7,6 +7,8 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
 
+gem 'graphql'
+
 group :test do
   gem 'rspec-rails'
 end
