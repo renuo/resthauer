@@ -1,0 +1,3 @@
+#!/bin/sh
+
+bin/rails s -b resthauer.dev -p 3001
