@@ -2,7 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class Reishauer
-# frozen_string_literal: true
+  # frozen_string_literal: true
   MENU = 0
   VEGETARIAN = 1
   DAILY_SPECIAL = 2
@@ -12,14 +12,14 @@ class Reishauer
   end
 
   def update
-    return if Menu.find_by(date:Date.today).present?
+    return if Menu.find_by(date: Time.zone.today).present?
     update_meal(Reishauer::MENU)
     update_meal(Reishauer::VEGETARIAN)
     update_meal(Reishauer::DAILY_SPECIAL)
   end
 
   def update_meal(menu_type)
-    monday = Date.today.monday
+    monday = Time.zone.today.monday
     (0..4).each do |i|
       meal_node = menu_type(menu_type).css('.meal').at(i).children
       date = monday + i.days
