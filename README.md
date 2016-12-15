@@ -1,24 +1,15 @@
-# README
+# Resthauer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an API for mensa menus.
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+    bin/setup
 
-* System dependencies
+## Run
 
-* Configuration
+    bin/run
 
-* Database creation
+## Test
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    bin/check
