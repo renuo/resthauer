@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  post '/', to: 'graphql#create'
+  post '/graphql', to: 'graphql#create'
+
+  get '*other', to: 'static#index'
 end
