@@ -6,5 +6,5 @@ MenuType = GraphQL::ObjectType.define do
   field :title, !types.String
   field :price, !types.Float
   field :description, !types.String
-  field :ratings, types[RatingType]
+  field :ratings, !types[RatingType]
 end

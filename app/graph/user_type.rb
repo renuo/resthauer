@@ -5,5 +5,5 @@ UserType = GraphQL::ObjectType.define do
   field :id, !types.ID
   field :name, !types.String
   field :email, !types.String
-  field :ratings, types[RatingType]
+  field :ratings, !types[RatingType]
 end
