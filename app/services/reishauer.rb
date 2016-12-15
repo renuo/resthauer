@@ -3,7 +3,7 @@ require 'nokogiri'
 
 class Reishauer
   def update
-    return if Menu.find_by(date: Date.today).present?
+    return if Menu.find_by(date: Time.zone.today).present?
     update_meals
   end
 
@@ -29,7 +29,7 @@ class Reishauer
   end
 
   def monday
-    @monday |= Date.today.monday
+    @monday ||= Time.zone.today.monday
   end
 
   def html_menu_content
