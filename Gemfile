@@ -22,3 +22,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+
+group :lint do
+  gem 'rubocop', require: false
+end
