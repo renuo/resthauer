@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <em>A Simple Test Call to the Resthauer</em>
+    </header>
+    <main>
+        <h1 id="menu-title"></h1>
+        <p id="menu-description"></p>
+        <ul id="menu-likers"></ul>
+    </main>
+    <footer>
+        by <a href="https://renuo.ch">Renuo AG</a>, hosted on <a href="https://github.com/renuo/resthauer">Github</a>
+    </footer>
+</div>
+
+<script>
+  const menuByIdQuery = `
+    query menuById($id: ID!) {
+      menu(id: $id) {
+        id
+        title
+        description
+        ratings {
+          value
+          user {
+            name
+          }
+        }
+      }
+    }`;
+
+  const payload = {
+    query: menuByIdQuery,
+    variables: {
+      id: 1
+    }
+  };
+
+  $.post("/graphql", payload, function(response) {
+    if (response.errors) {
+      console.log(response.errors)
+    } else {
+      let menu = response.data.menu;
+      let likers = menu.ratings.map(function(rating) { return rating.user.name; });
+
+      $('#menu-title').html(menu.title);
+      $('#menu-description').html(menu.description);
+      $('#menu-likers').html(likers.map(function(username) { return `<li>${username}</li>`; }).join("\n"));
+    }
+  })
+</script>
+
+</body>
+</html>
