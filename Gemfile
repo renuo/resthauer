@@ -11,6 +11,7 @@ gem 'graphql'
 
 group :test do
   gem 'rspec-rails'
+  gem 'timecop'
 end
 
 group :development, :test do
